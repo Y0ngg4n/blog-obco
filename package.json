@@ -1,6 +1,6 @@
 {
   "name": "@aaakul/astro-plain",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "private": true,
   "overrides": {

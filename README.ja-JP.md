@@ -25,8 +25,6 @@
     。
 - **その他の機能**：[Disqus](https://disqus.com/) コメントシステムと [Microsoft Clarity](https://clarity.microsoft.com/) サイトアクセス分析をサポート。
 
----
-
 ## クイックスタート
 
 ### インストール
@@ -70,8 +68,6 @@
 > `Pagefind` はインデックス生成に静的ビルドの出力に依存しています。開発環境で初めて使用する前に、ビルドコマンドを少なくとも1回実行する必要があります。
 > 記事を追加・修正した後、開発サーバーは検索インデックスを自動的に再生成しません。
 
----
-
 ## 設定説明
 
 ### サイト基本設定
@@ -95,6 +91,14 @@
 
 `.env.example` のコメントを参考に `.env` ファイルを作成してください。その中で `SITE_URL`、`BASE_PATH`、および Disqus、Clarity サービスを設定できます。
 
+### サイトのタイトルと説明の変更
+
+翻訳ファイル `i18n/messages/*.ts` の以下のフィールドを変更します：
+
+- `common.header_title`
+- `common.site_title`
+- `common.site_description`
+
 ### ファビコンと画像の差し替え
 
 以下のファイルを差し替えてください：
@@ -104,8 +108,6 @@
 - `public/apple-touch-icon.png`
 - `public/static/images/og.jpg`
 - `src/assets/*`
-
----
 
 ## コンテンツ作成
 
@@ -177,8 +179,6 @@ link:
 2. `i18n/messages/` 配下に対応する翻訳辞書ファイルを作成します（例：`fr-FR.ts`）。
 3. `i18n/index.ts` の `createI18n` にその辞書をインポートして登録します。
 4. `src/content/author/<言語コード>/` 配下に最低限 `default.mdx` を含む著者ファイルを作成します。
-
----
 
 ## デプロイ
 

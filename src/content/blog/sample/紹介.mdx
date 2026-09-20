@@ -31,8 +31,6 @@ image: "@/assets/og.jpg"
     。例は [_Markdown & MDX 執筆ガイド_](/ja-JP/blog/sample/執筆/) をご参照ください。
 - **その他の機能**：[Disqus](https://disqus.com/) コメントシステムと [Microsoft Clarity](https://clarity.microsoft.com/) サイトアクセス分析をサポート。
 
----
-
 ## クイックスタート
 
 ### インストールと実行
@@ -138,8 +136,6 @@ image: "@/assets/og.jpg"
 > `Pagefind` はインデックス生成に静的ビルドの出力に依存しています。開発環境で初めて使用する前に、ビルドコマンドを少なくとも1回実行する必要があります。
 > 記事を追加・修正した後、開発サーバーは検索インデックスを自動的に再生成しません。
 
----
-
 ## 設定説明
 
 ### サイト基本設定
@@ -166,6 +162,14 @@ image: "@/assets/og.jpg"
 
 `.env.example` のコメントを参考に `.env` ファイルを作成してください。
 
+### サイトのタイトルと説明の変更
+
+翻訳ファイル `i18n/messages/*.ts` の以下のフィールドを変更します：
+
+- `common.header_title`
+- `common.site_title`
+- `common.site_description`
+
 ### ファビコンと静的リソース
 
 - **ファビコンと画像**
@@ -177,8 +181,6 @@ image: "@/assets/og.jpg"
 
 - **グローバルデフォルト共有画像**：`site.config.ts` の `ogImage` フィールドで設定します（デフォルトは `"/static/images/og.jpg"` で、対応ファイルは `public/static/images/og.jpg`）。サイト全体の Open Graph およびソーシャル共有プレビュー画像として使用されます。推奨サイズは 1200x630 です。
 - **記事専用共有画像**：記事の Frontmatter で `image`（記事カバー画像）が設定されている場合、そちらが優先的に使用されます。
-
----
 
 ## 国際化（i18n）
 
@@ -337,8 +339,6 @@ Markdown 構文、Expressive Code コードハイライト、および `<Steps>`
 - **.env.example** 環境変数設定例
 
 </FileTree>
-
----
 
 ## オープンソースライセンス
 

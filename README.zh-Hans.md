@@ -25,8 +25,6 @@
     。
 - **其他功能**：支持 [Disqus](https://disqus.com/) 评论系统与 [Microsoft Clarity](https://clarity.microsoft.com/) 站点访问分析。
 
----
-
 ## 快速上手
 
 ### 安装
@@ -70,8 +68,6 @@
 > `Pagefind` 依赖静态构建产物生成索引，在开发环境中首次使用必须至少运行过一次构建命令。
 > 新增或修改文章后，开发服务器不会自动重新生成搜索索引。
 
----
-
 ## 配置说明
 
 ### 站点基础配置
@@ -95,6 +91,14 @@
 
 参考 `.env.example` 中的注释创建 `.env` 文件，可在其中设置 `SITE_URL`、`BASE_PATH` 以及 Disqus、Clarity 服务。
 
+### 修改网站标题和描述
+
+修改翻译文件 `i18n/messages/*.ts` 中的以下字段：
+
+- `common.header_title`
+- `common.site_title`
+- `common.site_description`
+
 ### 替换网站图标和图片
 
 替换以下文件：
@@ -104,8 +108,6 @@
 - `public/apple-touch-icon.png`
 - `public/static/images/og.jpg`
 - `src/assets/*`
-
----
 
 ## 内容创作
 
@@ -177,8 +179,6 @@ link:
 2. 在 `i18n/messages/` 下创建对应的翻译字典文件（如 `fr-FR.ts`）。
 3. 在 `i18n/index.ts` 的 `createI18n` 中引入并注册该字典。
 4. 在 `src/content/author/<语言代码>/` 下创建至少包含 `default.mdx` 的作者文件。
-
----
 
 ## 部署
 

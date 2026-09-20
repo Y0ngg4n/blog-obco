@@ -25,8 +25,6 @@ A minimalist multilingual static blog template built on [Astro](https://astro.bu
     .
 - **Other Features**: Support for [Disqus](https://disqus.com/) comment system and [Microsoft Clarity](https://clarity.microsoft.com/) site analytics.
 
----
-
 ## Getting Started
 
 ### Installation
@@ -70,8 +68,6 @@ A minimalist multilingual static blog template built on [Astro](https://astro.bu
 > `Pagefind` relies on static build output to generate its index. You must run the build command at least once before using it in the development environment for the first time.
 > After adding or modifying posts, the dev server will not automatically regenerate the search index.
 
----
-
 ## Configuration
 
 ### Site Configuration
@@ -95,6 +91,14 @@ The core configuration file is `site.config.ts`, with key options as follows:
 
 Refer to the comments in `.env.example` to create a `.env` file, where you can set `SITE_URL`, `BASE_PATH`, as well as Disqus and Clarity services.
 
+### Modifying Site Title and Description
+
+Modify the following fields in the translation files `i18n/messages/*.ts`:
+
+- `common.header_title`
+- `common.site_title`
+- `common.site_description`
+
 ### Replacing Favicons and Images
 
 Replace the following files:
@@ -104,8 +108,6 @@ Replace the following files:
 - `public/apple-touch-icon.png`
 - `public/static/images/og.jpg`
 - `src/assets/*`
-
----
 
 ## Content Creation
 
@@ -177,8 +179,6 @@ Body content...
 2. Create the corresponding translation dictionary file under `i18n/messages/` (e.g., `fr-FR.ts`).
 3. Import and register the dictionary in `createI18n` in `i18n/index.ts`.
 4. Create an author file containing at least `default.mdx` under `src/content/author/<language-code>/`.
-
----
 
 ## Deployment
 

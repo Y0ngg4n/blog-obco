@@ -16,6 +16,10 @@ const { class: className, ...attributes } = Astro.props;
     word-break: break-word;
     max-width: 72ch;
   }
+
+  .mdx-content :global(a:not(.link-icon)) {
+    text-decoration: underline;
+  }
 </style>
 
 <div class:list={["mdx-content", className]} {...attributes}>

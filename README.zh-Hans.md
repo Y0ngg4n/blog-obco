@@ -74,22 +74,23 @@
 
 核心配置文件为 `site.config.ts`，主要配置项如下：
 
-| 配置项            | 说明                                                | 默认值                    |
-| :---------------- | :-------------------------------------------------- | :------------------------ |
-| `defaultLanguage` | 默认语言代码                                        | `"zh-Hans"`               |
-| `siteUrl`         | 网站 URL（也可通过环境变量 `SITE_URL` 设置）        | `"http://127.0.0.1:4321"` |
-| `basePath`        | 子路径部署前缀（也可通过环境变量 `BASE_PATH` 设置） | `""`                      |
-| `languageNameMap` | 语言代码与显示名称映射                              | 见配置文件                |
-| `postsPerPage`    | 博客列表每页文章数                                  | `5`                       |
-| `navLinks`        | 顶部导航栏链接                                      | 见配置文件                |
-| `ogImage`         | 默认社交分享图（OG Image），推荐尺寸 1200x630       | `"/static/images/og.jpg"` |
-| `allowRobots`     | 是否允许爬虫                                        | `true`                    |
-| `disqus`          | Disqus 评论（`enable` + `shortname`）               | 禁用                      |
-| `clarity`         | Microsoft Clarity（`enable` + `projectId`）         | 禁用                      |
+| 配置项                   | 说明                                                | 默认值                    |
+| :----------------------- | :-------------------------------------------------- | :------------------------ |
+| `defaultLanguage`        | 默认语言代码                                        | `"zh-Hans"`               |
+| `siteUrl`                | 网站 URL（也可通过环境变量 `SITE_URL` 设置）        | `"http://127.0.0.1:4321"` |
+| `basePath`               | 子路径部署前缀（也可通过环境变量 `BASE_PATH` 设置） | `""`                      |
+| `languageNameMap`        | 语言代码与显示名称映射                              | 见配置文件                |
+| `postsPerPage`           | 博客列表每页文章数                                  | `5`                       |
+| `navLinks`               | 顶部导航栏链接                                      | 见配置文件                |
+| `ogImage`                | 默认社交分享图（OG Image），推荐尺寸 1200x630       | `"/static/images/og.jpg"` |
+| `allowRobots`            | 是否允许爬虫                                        | `true`                    |
+| `disqus`                 | Disqus 评论（`enable` + `shortname`）               | 禁用                      |
+| `clarity`                | Microsoft Clarity（`enable` + `projectId`）         | 禁用                      |
+| `googleSiteVerification` | Google 网站所有权验证代码                           | `""`                      |
 
 ### 环境变量
 
-参考 `.env.example` 中的注释创建 `.env` 文件，可在其中设置 `SITE_URL`、`BASE_PATH` 以及 Disqus、Clarity 服务。
+参考 `.env.example` 中的注释创建 `.env` 文件，可在其中设置 `SITE_URL`、`BASE_PATH`、Google 网站所有权验证以及 Disqus、Clarity 服务。
 
 ### 修改网站标题和描述
 

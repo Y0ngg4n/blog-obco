@@ -74,22 +74,23 @@ A minimalist multilingual static blog template built on [Astro](https://astro.bu
 
 The core configuration file is `site.config.ts`, with key options as follows:
 
-| Option            | Description                                                                      | Default                   |
-| :---------------- | :------------------------------------------------------------------------------- | :------------------------ |
-| `defaultLanguage` | Default language code                                                            | `"zh-Hans"`               |
-| `siteUrl`         | Site URL (can also be set via environment variable `SITE_URL`)                   | `"http://127.0.0.1:4321"` |
-| `basePath`        | Subpath deployment prefix (can also be set via environment variable `BASE_PATH`) | `""`                      |
-| `languageNameMap` | Mapping of language codes to display names                                       | See config file           |
-| `postsPerPage`    | Number of posts per page in the blog list                                        | `5`                       |
-| `navLinks`        | Top navigation bar links                                                         | See config file           |
-| `ogImage`         | Default social sharing image (OG Image), recommended size 1200x630               | `"/static/images/og.jpg"` |
-| `allowRobots`     | Whether to allow crawlers                                                        | `true`                    |
-| `disqus`          | Disqus comments (`enable` + `shortname`)                                         | Disabled                  |
-| `clarity`         | Microsoft Clarity (`enable` + `projectId`)                                       | Disabled                  |
+| Option                   | Description                                                                      | Default                   |
+| :----------------------- | :------------------------------------------------------------------------------- | :------------------------ |
+| `defaultLanguage`        | Default language code                                                            | `"zh-Hans"`               |
+| `siteUrl`                | Site URL (can also be set via environment variable `SITE_URL`)                   | `"http://127.0.0.1:4321"` |
+| `basePath`               | Subpath deployment prefix (can also be set via environment variable `BASE_PATH`) | `""`                      |
+| `languageNameMap`        | Mapping of language codes to display names                                       | See config file           |
+| `postsPerPage`           | Number of posts per page in the blog list                                        | `5`                       |
+| `navLinks`               | Top navigation bar links                                                         | See config file           |
+| `ogImage`                | Default social sharing image (OG Image), recommended size 1200x630               | `"/static/images/og.jpg"` |
+| `allowRobots`            | Whether to allow crawlers                                                        | `true`                    |
+| `disqus`                 | Disqus comments (`enable` + `shortname`)                                         | Disabled                  |
+| `clarity`                | Microsoft Clarity (`enable` + `projectId`)                                       | Disabled                  |
+| `googleSiteVerification` | Google site ownership verification code                                          | `""`                      |
 
 ### Environment Variables
 
-Refer to the comments in `.env.example` to create a `.env` file, where you can set `SITE_URL`, `BASE_PATH`, as well as Disqus and Clarity services.
+Refer to the comments in `.env.example` to create a `.env` file, where you can set `SITE_URL`, `BASE_PATH`, Google site ownership verification, as well as Disqus and Clarity services.
 
 ### Modifying Site Title and Description
 

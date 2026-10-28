@@ -110,6 +110,15 @@ const switchLinks: Map<Lang, string> =
     <ClientRouter />
     <LoadingIndicator color="var(--primary)" height="0.25rem" />
 
+    {
+      (SiteConfig.googleSiteVerification || import.meta.env.GOOGLE_SITE_VERIFICATION) && (
+        <meta
+          name="google-site-verification"
+          content={SiteConfig.googleSiteVerification || import.meta.env.GOOGLE_SITE_VERIFICATION}
+        />
+      )
+    }
+
     {/* Microsoft Clarity */}
     {
       import.meta.env.PROD && SiteConfig.clarity?.enable && SiteConfig.clarity?.projectId && (

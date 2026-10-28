@@ -62,6 +62,9 @@ const SiteConfig = {
     projectId: getEnv("CLARITY_PROJECT_ID") || "",
   },
 
+  /** Google 网站所有权验证 / Google Site Verification / Google サイトの所有権の確認 */
+  googleSiteVerification: getEnv("GOOGLE_SITE_VERIFICATION") || "",
+
   /** 是否在 Header 中显示 Logo / Whether to display logo in header / ヘッダーにロゴを表示するかどうか */
   isShowLogo: true,
 
@@ -104,6 +107,8 @@ export interface SiteConfigType {
     enable: boolean;
     projectId: string;
   };
+
+  googleSiteVerification?: string;
 
   isShowLogo: boolean;
 

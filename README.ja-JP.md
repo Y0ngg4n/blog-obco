@@ -74,22 +74,23 @@
 
 コア設定ファイルは `site.config.ts` で、主な設定項目は以下の通りです：
 
-| 設定項目          | 説明                                                                | デフォルト値              |
-| :---------------- | :------------------------------------------------------------------ | :------------------------ |
-| `defaultLanguage` | デフォルト言語コード                                                | `"zh-Hans"`               |
-| `siteUrl`         | サイト URL（環境変数 `SITE_URL` でも設定可能）                      | `"http://127.0.0.1:4321"` |
-| `basePath`        | サブパスデプロイプレフィックス（環境変数 `BASE_PATH` でも設定可能） | `""`                      |
-| `languageNameMap` | 言語コードと表示名のマッピング                                      | 設定ファイルを参照        |
-| `postsPerPage`    | ブログ記事一覧の1ページあたりの表示件数                             | `5`                       |
-| `navLinks`        | トップナビゲーションバーリンク                                      | 設定ファイルを参照        |
-| `ogImage`         | デフォルトのソーシャル共有画像（OG Image）、推奨サイズ 1200x630     | `"/static/images/og.jpg"` |
-| `allowRobots`     | クローラーを許可するかどうか                                        | `true`                    |
-| `disqus`          | Disqus コメント（`enable` + `shortname`）                           | 無効                      |
-| `clarity`         | Microsoft Clarity（`enable` + `projectId`）                         | 無効                      |
+| 設定項目                 | 説明                                                                | デフォルト値              |
+| :----------------------- | :------------------------------------------------------------------ | :------------------------ |
+| `defaultLanguage`        | デフォルト言語コード                                                | `"zh-Hans"`               |
+| `siteUrl`                | サイト URL（環境変数 `SITE_URL` でも設定可能）                      | `"http://127.0.0.1:4321"` |
+| `basePath`               | サブパスデプロイプレフィックス（環境変数 `BASE_PATH` でも設定可能） | `""`                      |
+| `languageNameMap`        | 言語コードと表示名のマッピング                                      | 設定ファイルを参照        |
+| `postsPerPage`           | ブログ記事一覧の1ページあたりの表示件数                             | `5`                       |
+| `navLinks`               | トップナビゲーションバーリンク                                      | 設定ファイルを参照        |
+| `ogImage`                | デフォルトのソーシャル共有画像（OG Image）、推奨サイズ 1200x630     | `"/static/images/og.jpg"` |
+| `allowRobots`            | クローラーを許可するかどうか                                        | `true`                    |
+| `disqus`                 | Disqus コメント（`enable` + `shortname`）                           | 無効                      |
+| `clarity`                | Microsoft Clarity（`enable` + `projectId`）                         | 無効                      |
+| `googleSiteVerification` | Google サイトの所有権の確認コード                                   | `""`                      |
 
 ### 環境変数
 
-`.env.example` のコメントを参考に `.env` ファイルを作成してください。その中で `SITE_URL`、`BASE_PATH`、および Disqus、Clarity サービスを設定できます。
+`.env.example` のコメントを参考に `.env` ファイルを作成してください。その中で `SITE_URL`、`BASE_PATH`、Google サイトの所有権の確認、および Disqus、Clarity サービスを設定できます。
 
 ### サイトのタイトルと説明の変更
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en-US" data-astro-cid-lcdefpme><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Redirecting...</title><noscript><meta http-equiv="refresh" content="0;url=/en-US"></noscript><script>(function(){const BASE_PATH = "";
+const DEFAULT_LANG = "en-US";
+const AVAILABLE_LANG = ["en-US"];
+const COOKIE_MAX_AGE = undefined;
+
+      (function () {
+        const COOKIE_NAME = "ASTRO_LANG";
+
+        // Read existing language preference from cookie
+        const cookieMatch = document.cookie.match(/(?:^|; )ASTRO_LANG=([^;]+)/);
+        const savedLang = cookieMatch ? cookieMatch[1] : null;
+
+        // Match candidate against supported languages (exact -> prefix -> null)
+        const findMatch = (lang) => {
+          if (!lang) return null;
+          if (AVAILABLE_LANG.includes(lang)) return lang;
+          const prefix = lang.split("-")[0];
+          return AVAILABLE_LANG.find((l) => l.startsWith(prefix)) || null;
+        };
+
+        const candidates = savedLang ? [savedLang] : navigator.languages || [navigator.language];
+        let targetLang = DEFAULT_LANG;
+        for (const lang of candidates) {
+          const match = findMatch(lang);
+          if (match) {
+            targetLang = match;
+            break;
+          }
+        }
+
+        // Save resolved language to cookie on first visit
+        if (!savedLang) {
+          const maxAge =
+            typeof COOKIE_MAX_AGE === "number" && COOKIE_MAX_AGE > 0
+              ? `; max-age=${COOKIE_MAX_AGE}`
+              : "";
+          document.cookie = `${COOKIE_NAME}=${targetLang}${maxAge}; path=/; SameSite=Lax`;
+        }
+
+        // Instant navigation without pushing history entry
+        window.location.replace((BASE_PATH ? BASE_PATH : "") + "/" + targetLang);
+      })();
+    })();</script><style>:root{color-scheme:light dark}body{color:canvastext;background-color:canvas;margin:0}
+</style><script type="module" src="/_astro/page.DxxK05Nl.js"></script></head><body data-astro-cid-lcdefpme></body></html>

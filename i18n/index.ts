@@ -54,7 +54,7 @@ export const {
   languages,
   defaultLanguage,
 } = createAstroI18n({
-  defaultLanguage: "zh-Hans",
+  defaultLanguage: "en-US",
   messages: {
     "en-US": enUS,
   },

@@ -30,10 +30,10 @@ Now create a Dockerfile in your Repository. You can use the [Dockerfile Referenc
 Add it to your Repository:
 
 ```bash
-git add .\ngit commit -m "Add Dockerfile"\n
+git add . git commit -m "Add Dockerfile"
 ```
 
-\\n
+\
 
 Head over to Dockerhub and open your _Account Settings._
 
@@ -49,34 +49,34 @@ Secrets Managment
 
 And add following Secrets:
 
-> \\n
+> \
 >
 > Name: `DOCKER_HUB_USERNAME`  
-> \\nContent: Your Dockerhub username
+> \ Content: Your Dockerhub username
 >
-> \\n
+> \
 
-\\n
+\
 
-> \\n
+> \
 >
 > Name: `DOCKER_HUB_ACCESS_TOKEN`  
-> \\nContent: The previosly generated _Access Token_
+> \ Content: The previosly generated _Access Token_
 >
-> \\n
+> \
 
-\\n
+\
 
 Now go back to your Repository and create at your project root following folder structure:
 
-\\n- .github\\n
-\\n- workflows\\n
-\\n- dockerhub.yaml
-\\n\\n
-\\n\\n
-\\n
+\ - .github\
+\ - workflows\
+\ - dockerhub.yaml
+\ \
+\ \
+\
 
-\\n
+\
 
 ![]("https://blog.obco.pro/content/images/2021/07/image-1.png")
 
@@ -85,18 +85,18 @@ Example Structure
 And in the dockerhub.yaml add following:
 
 ```yaml
-# Name of the Workflow\nname: Push to Dockerhub\n# Only push for commits on master branch\n# Remove this if you want to publish on every branch\non:\n  push:\n    branches: [ master ]\njobs:\n push-to-dockerhub:\n    # You can change this if you want to build on an other image\n    runs-on: ubuntu-latest\n    steps:\n      - name: Login to DockerHub\n        uses: docker/login-action@v1\n        with:\n          username: ${{ secrets.DOCKER_HUB_USERNAME }}\n          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}\n      - uses: actions/checkout@v2\n      - name: Build and push\n        id: docker_build\n        uses: docker/build-push-action@v2\n        with:\n          context: ./\n        # Change filename here if Dockerfile is other than Dockerfile\n          file: ./Dockerfile\n          push: true\n        # Change this to the Dockerhub repo you want to push your image to\n          tags: username/repo:latest\n        # Can be removed if digest not needed\n      - name: Image digest\n        run: echo ${{ steps.docker_build.outputs.digest }}\n
+# Name of the Workflow name: Push to Dockerhub # Only push for commits on master branch # Remove this if you want to publish on every branch on:   push:     branches: [ master ] jobs:  push-to-dockerhub:     # You can change this if you want to build on an other image     runs-on: ubuntu-latest     steps:       - name: Login to DockerHub         uses: docker/login-action@v1         with:           username: ${{ secrets.DOCKER_HUB_USERNAME }}           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}       - uses: actions/checkout@v2       - name: Build and push         id: docker_build         uses: docker/build-push-action@v2         with:           context: ./         # Change filename here if Dockerfile is other than Dockerfile           file: ./Dockerfile           push: true         # Change this to the Dockerhub repo you want to push your image to           tags: username/repo:latest         # Can be removed if digest not needed       - name: Image digest         run: echo ${{ steps.docker_build.outputs.digest }}
 ```
 
-\\n
+\
 
 Now commit everything:
 
 ```bash
-git add .\ngit commit -m "Add Push to Dockerhub workflow"\n
+git add . git commit -m "Add Push to Dockerhub workflow"
 ```
 
-\\n
+\
 
 Head over to your Github Repo and go to _Actions_ Tab.
 

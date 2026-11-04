@@ -11,10 +11,10 @@ Inspiration: [https://stackoverflow.com/questions/51305397/docker-compose-networ
 If you have 2 container that is using another container as network\_mode in docker this container gets the same IP as the service container. So for example you have this setup:
 
 ```yaml
----\nversion: "2.1"\nservices:\n\n  gateway:\n    ...\n    cap_add:\n      - NET_ADMIN\n    devices:\n      - /dev/net/tun:/dev/net/tun\n    ports:\n      - 1001:1001 # container a\n      - 2001:2001 # container b\n\n\n  a:\n    ...\n    network_mode: service:gateway\n\n  b:\n    network_mode: service:gluetun\n
+--- version: "2.1" services:    gateway:     ...     cap_add:       - NET_ADMIN     devices:       - /dev/net/tun:/dev/net/tun     ports:       - 1001:1001 # container a       - 2001:2001 # container b     a:     ...     network_mode: service:gateway    b:     network_mode: service:gluetun
 ```
 
-\\n
+\
 
 Now you want to _curl_ container **b** from container **a** for example.
 
@@ -23,9 +23,9 @@ You can easily access container b with a curl by using **localhost.**
 Example:
 
 ```
-curl http://localhost:2001/api\n
+curl http://localhost:2001/api
 ```
 
-\\n
+\
 
 I know this sounds absurd. But it works.

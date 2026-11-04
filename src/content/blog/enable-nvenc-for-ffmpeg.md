@@ -19,66 +19,66 @@ If you want cuda support aswell install the `nvidia-cuda-toolkit`
 Create a compilation directory:
 
 ```bash
-mkdir ~/nvidia/ && cd ~/nvidia/\ngit clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git\n
+mkdir ~/nvidia/ && cd ~/nvidia/ git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
 ```
 
-\\n
+\
 
 Compile the missing headers (ffnvcodec):
 
 ```bash
-cd nv-codec-headers && sudo make install\n
+cd nv-codec-headers && sudo make install
 ```
 
-\\n
+\
 
 Download FFMPEG Source Code:
 
 ```bash
-cd ~/nvidia/\ngit clone https://git.ffmpeg.org/ffmpeg.git ffmpeg/`\n
+cd ~/nvidia/ git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg/`
 ```
 
-\\n
+\
 
 Install the compilation tools:
 
 ```bash
-sudo apt install build-essential yasm cmake libtool libc6 libc6-dev unzip wget libnuma1 libnuma-dev`\n
+sudo apt install build-essential yasm cmake libtool libc6 libc6-dev unzip wget libnuma1 libnuma-dev`
 ```
 
-\\n
+\
 
 Configure FFMPEG to compile with nvenc and cuda enabled. (You can remove the cuda flags if you only need nvenc):
 
 ```bash
-PKG_CONFIG_PATH="~/nvidia/nv-codec-headers" ./configure --enable-nonfree --enable-cuda-nvcc --enable-cuda-llvm --enable-nvenc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64 \n
+PKG_CONFIG_PATH="~/nvidia/nv-codec-headers" ./configure --enable-nonfree --enable-cuda-nvcc --enable-cuda-llvm --enable-nvenc --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64
 ```
 
-\\n
+\
 
 Compile FFMPEG:
 
 ```
-make -j $(nproc)\n
+make -j $(nproc)
 ```
 
-\\n
+\
 
 Now there should be a executeable created:
 
 ```
-ls -l ffmpels -l ffmpe`g\n./ffmpeg\n
+ls -l ffmpels -l ffmpe`g ./ffmpeg
 ```
 
-\\n
+\
 
 If you want you can install this executable:
 
 ```bash
-make install\n
+make install
 ```
 
-\\n
+\
 
 Now you can use cuda hardware acceleration and the nvenc codec
 
@@ -92,8 +92,8 @@ Releases · jellyfin/jellyfin-ffmpeg
 
 FFmpeg for Jellyfin. Contribute to jellyfin/jellyfin-ffmpeg development by creating an account on GitHub.
 
-![\\"\\"]("https://github.com/fluidicon.png")GitHubjellyfin
+![\"\"]("https://github.com/fluidicon.png")GitHubjellyfin
 
-![\\"\\"]("https://opengraph.githubassets.com/14b7cf8ef320a9a7924d3116811d1d4a1514843aa267b441359f19f308a49151/jellyfin/jellyfin-ffmpeg")
+![\"\"]("https://opengraph.githubassets.com/14b7cf8ef320a9a7924d3116811d1d4a1514843aa267b441359f19f308a49151/jellyfin/jellyfin-ffmpeg")
 
-](\"https://github.com/jellyfin/jellyfin-ffmpeg/releases\")
+]("https://github.com/jellyfin/jellyfin-ffmpeg/releases")

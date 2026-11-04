@@ -18,7 +18,7 @@ There are several approaches to solve the problem of automated builds for AUR Pa
 
 But it was not that i was searching for. I wanted something automated. Something that i can schedule every week or every day, to push the newest images to my repository.
 
-I already used [Drone CI]("https://www.drone.io/") so i sticked with it and built a pipeline generator for it. It\\'s a bash script that can be used to generate the .drone.yml. But lets start first with the things you will need to build this pipeline yourself:
+I already used [Drone CI]("https://www.drone.io/") so i sticked with it and built a pipeline generator for it. It\'s a bash script that can be used to generate the .drone.yml. But lets start first with the things you will need to build this pipeline yourself:
 
 - A installed [Sonatype Nexus Repository]("https://www.sonatype.com/products/repository-oss?topnav=true")
 - A working Drone CI instance
@@ -33,18 +33,18 @@ I already used [Drone CI]("https://www.drone.io/") so i sticked with it and buil
 5.  Add the packages you want
 
 ```
-git submodule add https://aur.archlinux.org/timeshift.git timeshift\n
+git submodule add https://aur.archlinux.org/timeshift.git timeshift
 ```
 
-\\n
+\
 
 6\. Register the Packages you want in the _packages.txt_. You can add commands that should be executed first, before building the package with an ^. So for example if you want to install nano before installing timeshift register the package like this in the _packages.txt_ (every package in a single line).
 
 ```
-timeshift^pacman -Sy --noconfirm nano\n
+timeshift^pacman -Sy --noconfirm nano
 ```
 
-\\n
+\
 
 7\. Change the variables in the _buildDrone.sh_. For example the volumepath describes where the shared volume for all pipeline steps is mounted. This is important because this i later the name you add into your _pamac.conf_. Also change the _apiurl_ to the API URL of your Nexus Instance.
 

@@ -1,6 +1,6 @@
 ---
 title: "Fix common Deepin Desktop Problems on Manjaro"
-description: "This Fixes maybe also help on other Distributions, but are tested on Manjaro.\\n\\nBlack Background on Launcher and Logout Screen when using Custom Wallpaper\\nIf "
+description: "This Fixes maybe also help on other Distributions, but are tested on Manjaro.\\n\\nBlack Background on Launcher and Logout Screen when using Custom Wallpaper\\nIf"
 translationKey: "fix-common-deepin-desktop-problems-manajaro"
 language: "en-US"
 date: 2020-04-25
@@ -24,10 +24,10 @@ To fix this problem follow this steps:
 - Execute following command:
 
 ```
-convert [image name] -filter Gaussian -blur 0x16 [image name]\n
+convert [image name] -filter Gaussian -blur 0x16 [image name]
 ```
 
-\\n
+\
 
 Now the Image should be blurry.
 
@@ -54,9 +54,9 @@ There is a solution for this Problem. To fix this Problem follow this steps:
 - Change the values of each Display accordingly to your xorg config.
 - Reboot
 
-If the config is not loaded at boot, just use the Deepin Display Manager, don\\'t change anything and just hit save. Recheck your display.json, that everything is correct.
+If the config is not loaded at boot, just use the Deepin Display Manager, don\'t change anything and just hit save. Recheck your display.json, that everything is correct.
 
-If you changed your Monitor Setup, like unplugged a monitor, and want your settings back, use Deepin Display Manager. Open it, don\\'t change anything and hit save. Your config should reset to your cofiguration in display.json.
+If you changed your Monitor Setup, like unplugged a monitor, and want your settings back, use Deepin Display Manager. Open it, don\'t change anything and hit save. Your config should reset to your cofiguration in display.json.
 
 ## Can´t enable Window Effects in Settings
 
@@ -68,18 +68,18 @@ If you are in Settings and you can´t enable the Window Effects so you can switc
 - Change this line:
 
 ```
-OpenGLIsUnsafe=true\n
+OpenGLIsUnsafe=true
 ```
 
-\\n
+\
 
 to this:
 
 ```
-OpenGLIsUnsafe=false\n
+OpenGLIsUnsafe=false
 ```
 
-\\n
+\
 
 - Reboot
 

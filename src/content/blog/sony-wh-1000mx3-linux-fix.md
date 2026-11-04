@@ -47,12 +47,12 @@ Debian
 
 ## Connect the Headphone
 
-First i thought: _\\"Yeah just connect them and i am ready\\"_. That was a sweet dream...
+First i thought: _\"Yeah just connect them and i am ready\"_. That was a sweet dream...
 
 So to connect them it took me several steps. I have them from this [Forum Post]("https://forums.archlinux.fr/viewtopic.php?f=15&t=21588&p=172016#p172016")
 
 ```
-sudo systemctl start bluetooth\nsudo systemctl status bluetooth\nbluetoothctl list\nbluetoothctl devices\nsudo systemctl enable bluetooth
+sudo systemctl start bluetooth sudo systemctl status bluetooth bluetoothctl list bluetoothctl devices sudo systemctl enable bluetooth
 ```
 
 Then reboot....
@@ -64,7 +64,7 @@ After the reboot you should be able to connect with the Headphones.
 If not you can connect them manually (Commands from [Arch Docs]("https://wiki.archlinux.org/title/Bluetooth")):
 
 ```
-bluetoothctl\ndefault-agent\npower on\nscan on
+bluetoothctl default-agent power on scan on
 ```
 
 Wait until your Headphones appear and copy their address.
@@ -72,21 +72,21 @@ Wait until your Headphones appear and copy their address.
 Then enter following commands:
 
 ```
-pair [ADDRESS]\nconnect [ADDRESS]
+pair [ADDRESS] connect [ADDRESS]
 ```
 
 Your Headphones should be now connected.
 
-Now go ahead and test them. In my case the sound was very muddy. This is because your headphones are now in the \\"Microphone-enabled -shitty-sound-mode\\" as i call it. To get the clear sound we all want you have to check the config of **Pipewire**. It took me some time to figure this out. But go ahead to the new **Pipewire** config location:
+Now go ahead and test them. In my case the sound was very muddy. This is because your headphones are now in the \"Microphone-enabled -shitty-sound-mode\" as i call it. To get the clear sound we all want you have to check the config of **Pipewire**. It took me some time to figure this out. But go ahead to the new **Pipewire** config location:
 
 ```
-cd /usr/share/pipewire\nls -la
+cd /usr/share/pipewire ls -la
 ```
 
 you will see some configuration for **Pipewire**. Here you can change the general behaviour of **Pipewire**. But we just want to change the **bluez** behaviour so we go ahead to the _media-session.d_ directory:
 
 ```
-cd media-session.d\n
+cd media-session.d
 ```
 
 then we go ahead and edit the _bluez-monitor.conf_ file:

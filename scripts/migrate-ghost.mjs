@@ -6,11 +6,6 @@
 // Usage:
 //   node scripts/migrate-ghost.mjs <ghost.sql> <ghost-content-dir>
 //
-// Example:
-//   node scripts/migrate-ghost.mjs \
-//     ~/Nextcloud/Yggdrasil/NewKubernetes/nixos-k3s/ghost.sql \
-//     ~/Documents/Downloads/93d053d8-9311-4b1b-9e1c-d8505af89ecb
-//
 // Requires: turndown, turndown-plugin-gfm
 //   pnpm add -D turndown turndown-plugin-gfm
 
@@ -32,8 +27,6 @@ const GHOST_URL = "https://blog.obco.pro";
 // SQL dump parsing
 // ---------------------------------------------------------------------------
 
-// Walks the VALUES block of an INSERT and returns an array of rows, where
-// each row is an array of raw SQL literals (still quoted) to be decoded.
 function parseInsertRows(valuesBlock) {
   const rows = [];
   let i = 0;
@@ -42,7 +35,7 @@ function parseInsertRows(valuesBlock) {
   while (i < len) {
     while (i < len && valuesBlock[i] !== "(") i++;
     if (i >= len) break;
-    i++; // skip '('
+    i++;
 
     const values = [];
     let current = "";
@@ -106,7 +99,6 @@ function decodeSqlLiteral(raw) {
     return Number.isNaN(n) ? raw : n;
   }
   let s = raw.slice(1, -1);
-  // Order matters: handle doubled quotes first, then backslash escapes.
   s = s.replace(/''/g, "'");
   s = s.replace(/\\n/g, "\n");
   s = s.replace(/\\r/g, "\r");
@@ -120,7 +112,6 @@ function decodeSqlLiteral(raw) {
   return s;
 }
 
-// Reads column order from the CREATE TABLE so we never hardcode positions.
 function readColumnOrder(sql, tableName) {
   const re = new RegExp(`CREATE TABLE \`${tableName}\` \\(([\\s\\S]*?)\\n\\) ENGINE`, "i");
   const match = sql.match(re);
@@ -133,8 +124,6 @@ function readColumnOrder(sql, tableName) {
   return columns;
 }
 
-// Returns the text between "INSERT INTO `table` VALUES" and the terminating
-// semicolon, ignoring semicolons inside quoted strings.
 function readInsertValues(sql, tableName) {
   const marker = `INSERT INTO \`${tableName}\` VALUES`;
   const start = sql.indexOf(marker);
@@ -189,31 +178,47 @@ function parseTable(sql, tableName) {
 }
 
 // ---------------------------------------------------------------------------
+// Text cleanup
+// ---------------------------------------------------------------------------
+
+// Titles and descriptions: collapse whitespace, remove leftover SQL escapes.
+function cleanText(value) {
+  if (!value) return "";
+  return value.replace(/\s+/g, " ").replace(/\\+"/g, '"').replace(/\\+'/g, "'").trim();
+}
+
+// Body text: Turndown can leave literal backslash sequences behind when the
+// source HTML contained them as text (Ghost stores some escaped content).
+function cleanBody(markdown) {
+  return markdown
+    .replace(/\\n/g, " ")
+    .replace(/\\r/g, " ")
+    .replace(/\\t/g, " ")
+    .replace(/\\"/g, '"')
+    .replace(/\\'/g, "'");
+}
+
+// ---------------------------------------------------------------------------
 // Ghost HTML cleanup
 // ---------------------------------------------------------------------------
 
 function cleanGhostHtml(html) {
   if (!html) return "";
 
-  return (
-    html
-      .replaceAll("__GHOST_URL__", GHOST_URL)
-      // Ghost bookmark cards: collapse to a plain paragraph link.
-      .replace(
-        /<figure class="kg-card kg-bookmark-card[^"]*">[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>[\s\S]*?<\/figure>/g,
-        (_, href) => `<p><a href="${href}">${href}</a></p>`,
-      )
-      // Callout cards: convert to blockquote so the text survives.
-      .replace(
-        /<div class="kg-card kg-callout-card[^"]*">[\s\S]*?<div class="kg-callout-text">([\s\S]*?)<\/div>\s*<\/div>/g,
-        "<blockquote>$1</blockquote>",
-      )
-      // Image figures: keep the inner <img>, drop the figure wrapper.
-      .replace(
-        /<figure class="kg-card kg-image-card[^"]*">([\s\S]*?)<\/figure>/g,
-        (_, inner) => inner,
-      )
-  );
+  return html
+    .replaceAll("__GHOST_URL__", GHOST_URL)
+    .replace(
+      /<figure class="kg-card kg-bookmark-card[^"]*">[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>[\s\S]*?<\/figure>/g,
+      (_, href) => `<p><a href="${href}">${href}</a></p>`,
+    )
+    .replace(
+      /<div class="kg-card kg-callout-card[^"]*">[\s\S]*?<div class="kg-callout-text">([\s\S]*?)<\/div>\s*<\/div>/g,
+      "<blockquote>$1</blockquote>",
+    )
+    .replace(
+      /<figure class="kg-card kg-image-card[^"]*">([\s\S]*?)<\/figure>/g,
+      (_, inner) => inner,
+    );
 }
 
 // ---------------------------------------------------------------------------
@@ -230,8 +235,6 @@ function createTurndown() {
 
   td.use(gfm);
 
-  // Preserve the language hint on fenced code blocks so Shiki can highlight
-  // them at build time.
   td.addRule("fencedCode", {
     filter: (node) =>
       node.nodeName === "PRE" && node.firstChild && node.firstChild.nodeName === "CODE",
@@ -260,7 +263,6 @@ async function copyFromGhost(originalUrl, destAbs, ghostContentDir) {
     throw new Error(`invalid url: ${originalUrl}`);
   }
 
-  // /content/images/2023/05/foo.png -> images/2023/05/foo.png
   const relative = urlPath.replace(/^\/content\//, "");
   const source = path.join(ghostContentDir, relative);
 
@@ -276,7 +278,6 @@ async function localizeImages(markdown, ghostContentDir) {
     found.push({ full: m[0], alt: m[1], url: m[2] });
   }
 
-  // Deduplicate by URL so we copy each file once.
   const seen = new Map();
   for (const item of found) {
     let urlPath;
@@ -294,7 +295,7 @@ async function localizeImages(markdown, ghostContentDir) {
     const localAbs = path.join(PUBLIC_DIR, localRel);
     try {
       await fs.access(localAbs);
-      continue; // already copied on a previous run
+      continue;
     } catch {}
     try {
       await copyFromGhost(url, localAbs, ghostContentDir);
@@ -352,18 +353,17 @@ function yamlString(value) {
 
 function buildPostFrontmatter({ title, description, date, heroImage, slug }) {
   const lines = ["---"];
-  lines.push(`title: ${yamlString(title)}`);
-  lines.push(`description: ${yamlString(description)}`);
-  lines.push(`translationKey: ${yamlString(slug)}`); // use slug as unique identifier
-  lines.push(`language: "en-US"`); // English site fixed value
-  lines.push(`date: ${date}`); // must be date type
+  lines.push(`title: ${yamlString(cleanText(title))}`);
+  lines.push(`description: ${yamlString(cleanText(description))}`);
+  lines.push(`translationKey: ${yamlString(slug)}`);
+  lines.push(`language: "en-US"`);
+  lines.push(`date: ${date}`);
   if (heroImage) lines.push(`heroImage: ${yamlString(heroImage)}`);
   lines.push("---", "");
   return lines.join("\n");
 }
 
 function sqlDateToIso(sqlDate) {
-  // Ghost stores "YYYY-MM-DD HH:MM:SS"; Astro wants YYYY-MM-DD.
   return sqlDate.slice(0, 10);
 }
 
@@ -372,10 +372,10 @@ function sqlDateToIso(sqlDate) {
 // ---------------------------------------------------------------------------
 
 async function writeLegalPage(page, td, ghostContentDir) {
-  const body = td.turndown(cleanGhostHtml(page.html || ""));
+  const body = cleanBody(td.turndown(cleanGhostHtml(page.html || "")));
   const localized = await localizeImages(body, ghostContentDir);
 
-  const frontmatter = ["---", `title: ${yamlString(page.title)}`, "---", ""].join("\n");
+  const frontmatter = ["---", `title: ${yamlString(cleanText(page.title))}`, "---", ""].join("\n");
 
   const file = path.join(LEGAL_DIR, `${page.slug}.md`);
   await fs.mkdir(LEGAL_DIR, { recursive: true });
@@ -384,10 +384,10 @@ async function writeLegalPage(page, td, ghostContentDir) {
 }
 
 async function writePlainPage(page, td, ghostContentDir) {
-  const body = td.turndown(cleanGhostHtml(page.html || ""));
+  const body = cleanBody(td.turndown(cleanGhostHtml(page.html || "")));
   const localized = await localizeImages(body, ghostContentDir);
 
-  const frontmatter = ["---", `title: ${yamlString(page.title)}`, "---", ""].join("\n");
+  const frontmatter = ["---", `title: ${yamlString(cleanText(page.title))}`, "---", ""].join("\n");
 
   const file = path.join(ROOT, "src", "pages", `${page.slug}.md`);
   await fs.writeFile(file, frontmatter + localized + "\n");
@@ -439,7 +439,7 @@ async function main() {
 
     if (post.type !== "post") continue;
 
-    const body = td.turndown(cleanGhostHtml(post.html || ""));
+    const body = cleanBody(td.turndown(cleanGhostHtml(post.html || "")));
     const withImages = await localizeImages(body, ghostContentDir);
     const hero = await localizeHeroImage(post.feature_image, ghostContentDir);
 

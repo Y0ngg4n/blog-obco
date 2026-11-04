@@ -15,7 +15,7 @@ Automatischer Bahn Beschwerde Email Generator. Beschwerde Email innerhalb von Se
 
 ![]("https://bahn.oblivioncoding.pro/img/favicon/apple-touch-icon.png")
 
-](\"https://bahn.oblivioncoding.pro\")
+]("https://bahn.oblivioncoding.pro")
 
 Bahn Beschwerde Email Generator Website
 
@@ -45,6 +45,6 @@ Bahn Beschwerde Email Generator zum schnellen Generieren von Bahn Beschwerde Ema
 
 ![]("https://avatars2.githubusercontent.com/u/30302975?s=400&v=4")
 
-](\"https://github.com/Y0ngg4n/BahnBeschwerdeGenerator\")
+]("https://github.com/Y0ngg4n/BahnBeschwerdeGenerator")
 
 GitHub Repository

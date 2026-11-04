@@ -11,10 +11,10 @@ I had issues with my Framework 16 Laptop that it wont power of.
 I tried the following:
 
 ```shell
-reboot now\nshutdown now\nsystemctl reboot\nsystemctl shutdown\n
+reboot now shutdown now systemctl reboot systemctl shutdown
 ```
 
-\\n
+\
 
 And i also tried pressing the power button.
 

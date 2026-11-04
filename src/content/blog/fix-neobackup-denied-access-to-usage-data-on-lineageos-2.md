@@ -11,9 +11,9 @@ So i flashed LineageOS on my smartphone and wanted to restore my previous backup
 As my smartphone was already rooted i could use this command via **adb** to give access:
 
 ```
-adb shell\nsu\npm grant com.machiav3lli.backup android.permission.PACKAGE_USAGE_STATS\n
+adb shell su pm grant com.machiav3lli.backup android.permission.PACKAGE_USAGE_STATS
 ```
 
-\\n
+\
 
 That fixed the problem for me.

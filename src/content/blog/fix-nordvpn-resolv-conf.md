@@ -14,35 +14,35 @@ So i searched across the Internet and found a simple solution i want to share wi
 First get permissions back:
 
 ```bash
-sudo chattr -i /etc/resolv.conf\n
+sudo chattr -i /etc/resolv.conf
 ```
 
-\\n
+\
 
 Then edit the `/etc/resolv.conf` or delete it and create it new:
 
-\\n
+\
 
 ```bash
-sudo rm -rf /etc/resolv.conf\n
+sudo rm -rf /etc/resolv.conf
 ```
 
-\\n
+\
 
 After that, add your nameservers. I am using [dns.watch]("https://dns.watch/") nameservers but you can use whatever you want.
 
 ```bash
-sudo echo "nameserver 84.200.69.80" >> /etc/resolv.conf\nsudo echo "nameserver 84.200.70.40" >> /etc/resolv.conf\n
+sudo echo "nameserver 84.200.69.80" >> /etc/resolv.conf sudo echo "nameserver 84.200.70.40" >> /etc/resolv.conf
 ```
 
-\\n
+\
 
 Tada! Fixed :)
 
 If you want to make a script of it you can use the following:
 
 ```bash
-#!/bin/bash\nsudo chattr -i /etc/resolv.conf\nsudo rm -rf /etc/resolv.conf\nsudo echo "nameserver 84.200.69.80" >> /etc/resolv.conf\nsudo echo "nameserver 84.200.70.40" >> /etc/resolv.conf\n
+#!/bin/bash sudo chattr -i /etc/resolv.conf sudo rm -rf /etc/resolv.conf sudo echo "nameserver 84.200.69.80" >> /etc/resolv.conf sudo echo "nameserver 84.200.70.40" >> /etc/resolv.conf
 ```
 
-\\n
+\

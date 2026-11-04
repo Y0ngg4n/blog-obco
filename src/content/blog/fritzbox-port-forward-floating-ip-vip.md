@@ -10,17 +10,17 @@ So you have a floating IP via keepalived or kubevip for example and you want to 
 
 They usual way would be to go to Internet -> Permit access -> Port Forwarding (de: Internet -> Freigaben -> Portfreigaben)
 
-And usually you just would press \\"Add device for sharing\\" (de: Gerät für Freigabe hinzufügen) and select your device from the dropdown menu.
+And usually you just would press \"Add device for sharing\" (de: Gerät für Freigabe hinzufügen) and select your device from the dropdown menu.
 
 But that does not work with floating IPs because the MAC adress gets also bound to that Port forward and with a floating IP your MAC changes.
 
 So what to do now?
 
-So the first thing you have to do that sounds really weird but it only works this way. Take the devices offline and delete the floating ip from devices list in the FritzBox!. If you do not do that you will get an error with \\"IP Address already in use\\". So disable your keepalived or shutdown the devices and check that the IP is not registered in the FritzBox!.
+So the first thing you have to do that sounds really weird but it only works this way. Take the devices offline and delete the floating ip from devices list in the FritzBox!. If you do not do that you will get an error with \"IP Address already in use\". So disable your keepalived or shutdown the devices and check that the IP is not registered in the FritzBox!.
 
 Then go to Port Forwarding again and add a new Port Forward.
 
-Now in the Dropdown Menu where you usually add devices via MAC you scroll down to the bottom. There it says something like \\"Entering IP manually\\". Select this option and enter your floating IP.
+Now in the Dropdown Menu where you usually add devices via MAC you scroll down to the bottom. There it says something like \"Entering IP manually\". Select this option and enter your floating IP.
 
 Add the ports you want to forward and press save.
 

@@ -11,17 +11,17 @@ I have created [sealed secrets with Flux]("https://fluxcd.io/flux/guides/sealed-
 On your old cluster:
 
 ```bash
-kubectl get secret -n flux-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > keys.secret\n
+kubectl get secret -n flux-system -l sealedsecrets.bitnami.com/sealed-secrets-key -o yaml > keys.secret
 ```
 
-\\n
+\
 
 On your new cluster:
 
 ```
-kubectl apply -f keys.secret\n
+kubectl apply -f keys.secret
 ```
 
-\\n
+\
 
 Save this file somewhere save! If you loose it you will not be able to decrypt the secrets again. Also it seems like you have to make this backup regularly as it seems like sealed secrets are adding things to this secrets sometimes.

@@ -1,6 +1,6 @@
 ---
 title: "Automatically Generate Doxygen Documentation for all Repositories"
-description: "If you code, you often need to understand code written by others. \\nUnderstanding Code can be more easy if you have some Documentation. \\nBut you really don\\'t "
+description: "If you code, you often need to understand code written by others. \\nUnderstanding Code can be more easy if you have some Documentation. \\nBut you really don't"
 translationKey: "gendoxy"
 language: "en-US"
 date: 2020-01-23
@@ -9,12 +9,12 @@ heroImage: "/images/ghost/2020/09/doxygen.png"
 
 If you code, you often need to understand code written by others.  
 Understanding Code can be more easy if you have some Documentation.  
-But you really don\\'t want to write some txt Files for Documenting your code.  
+But you really don\'t want to write some txt Files for Documenting your code.  
 If you code in Java you may now Javadocs.
 
 But what is with other Programming Languages?  
 Often there is no official Documentation Tool. But there is a solution to generate Documentations for almost every Programming Language. It is called Doxygen.  
-If you don\\'t know it yet, check it out: [http://www.doxygen.nl]("http://www.doxygen.nl")
+If you don\'t know it yet, check it out: [http://www.doxygen.nl]("http://www.doxygen.nl")
 
 But if you work with Doxygen you will fast recognize Doxygen generates every time a new Documentation for every single Project.  
 A solution is to take all your Projects in one main Project. But that´s not really clean. There are options to load custom Headers and other fancy stuff.  
@@ -27,7 +27,7 @@ But it was not the option I have searched for.
 So I wrote a Generator call GenDoxy that connects to your VCS and generates Documentations for all Repositories. A Python Script is neat, but a self-updating Docker Container is neater. To customize the Documentation just edit the Dockerfile and build the image your-self.
 
 So ok, now I have 500 different Documentation Folders with their own Website. Thats not really a Documentation System Right?    
-So why don\\'t have some small PHP Pages that lead you to the Documentation Pages you want?  
+So why don\'t have some small PHP Pages that lead you to the Documentation Pages you want?  
 Guess what, i wrote them.
 
 The Installation of this Documentation Pipeline is super easy and can be done in round about 30 Minutes.
@@ -55,7 +55,7 @@ The Files to Build the Docker Image for GenDoxy. Contribute to Y0ngg4n/GenDoxyDo
 
 ![]("https://avatars2.githubusercontent.com/u/30302975?s=400&v=4")
 
-](\"https://github.com/Y0ngg4n/GenDoxyDockerImage\")
+]("https://github.com/Y0ngg4n/GenDoxyDockerImage")
 
 - Using prebuild Docker Image: Follow Instructions on GitHub
 
@@ -64,10 +64,10 @@ or
 - Build the Image your own:
 
 ```bash
-git clone https://github.com/Y0ngg4n/GenDoxyDockerImage.git\ncd GenDoxyDockerImage\ndocker build . -t gendoxy\n
+git clone https://github.com/Y0ngg4n/GenDoxyDockerImage.git cd GenDoxyDockerImage docker build . -t gendoxy
 ```
 
-\\n
+\
 
 ---
 
@@ -83,13 +83,13 @@ A lightweight Php Website to organize all Documentations - Y0ngg4n/GenDoxyWebsit
 
 ![]("https://avatars2.githubusercontent.com/u/30302975?s=400&v=4")
 
-](\"https://github.com/Y0ngg4n/GenDoxyWebsite.git\")
+]("https://github.com/Y0ngg4n/GenDoxyWebsite.git")
 
 ```bash
-git clone https://github.com/Y0ngg4n/GenDoxyWebsite.git /var/www/gendoxy\nchown www-data:www-data /var/www/gendoxy -R\n
+git clone https://github.com/Y0ngg4n/GenDoxyWebsite.git /var/www/gendoxy chown www-data:www-data /var/www/gendoxy -R
 ```
 
-\\n
+\
 
 - Edit _/var/www/gendoxy/index.php_ file and change _docPath_ variable to the mount path of your Docker Container.
 - Add PHP Configuration to your Webserver to serve the _/var/www/gendoxy_ directory. A sample tutorial for nginx configuration: [https://www.linode.com/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/]("https://www.linode.com/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/")
@@ -108,7 +108,7 @@ The Python scripts for GenDoxy. Contribute to Y0ngg4n/GenDoxyPython development 
 
 ![]("https://avatars2.githubusercontent.com/u/30302975?s=400&v=4")
 
-](\"https://github.com/Y0ngg4n/GenDoxyPython.git\")
+]("https://github.com/Y0ngg4n/GenDoxyPython.git")
 
 - To modify the Generator you can checkout the Repository and edit the Python Scripts to your wishes.  
   Then just edit the Docker Image and build your customized Image.  

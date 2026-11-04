@@ -9,7 +9,7 @@ date: 2024-05-28
 After you installed doom emacs you have to run this command if doom emacs does not work.
 
 ```bash
-ln -s ~/.config/emacs ~/.emacs.d\n
+ln -s ~/.config/emacs ~/.emacs.d
 ```
 
-\\n
+\

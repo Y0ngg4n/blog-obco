@@ -1,6 +1,6 @@
 ---
 title: "Extended Bitwarden REST API"
-description: "Bitwarden [https://bitwarden.com] is a great Password Vault. It has nice\\nFeatures, a good structured Passw0rd access and integrations for almost every\\ndevice "
+description: "Bitwarden [https://bitwarden.com] is a great Password Vault. It has nice\\nFeatures, a good structured Passw0rd access and integrations for almost every\\ndevice"
 translationKey: "extended-bitwarden-rest-api"
 language: "en-US"
 date: 2021-04-06

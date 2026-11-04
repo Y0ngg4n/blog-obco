@@ -12,46 +12,46 @@ There it mentions [librdb]("https://github.com/redis/librdb").
 
 So what do to do? Follow this steps:
 
-## Build librbd\\'s tool rbd-cli
+## Build librbd\'s tool rbd-cli
 
-\\n
+\
 
 ```bash
-git clone https://github.com/redis/librdb.git\ncd librbd\nmake PREFIX=$PWD/build\n\n
+git clone https://github.com/redis/librdb.git cd librbd make PREFIX=$PWD/build
 ```
 
-\\n
+\
 
 ## Make a dumb
 
-\\n
+\
 
 Inside your redis container execute this command:
 
-\\n
+\
 
 ```bash
-redis-cli -a \"$REDIS_PASSWORD\" BGSAVE\n
+redis-cli -a "$REDIS_PASSWORD" BGSAVE
 ```
 
-\\n
+\
 
-Then check with redis-cli -a \\"$REDIS\_PASSWORD\\" INFO persistence that the variable `rdb_bgsave_in_progress` is `0`.
+Then check with redis-cli -a \"$REDIS\_PASSWORD\" INFO persistence that the variable `rdb_bgsave_in_progress` is `0`.
 
-\\n
+\
 
 Copy the dump file in the same folder where you have cloned rbd-cli.
 
-\\n
+\
 
 then execute
 
-\\n
+\
 
 ```bash
- ./bin/rdb-cli dump.rdb redis -h \"$REDIS_HOST\" -p 6379\n
+ ./bin/rdb-cli dump.rdb redis -h "$REDIS_HOST" -p 6379
 ```
 
-\\n
+\
 
 i have tested it with redis 7.4.1 and valkey 8.1.3

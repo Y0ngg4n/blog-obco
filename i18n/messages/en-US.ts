@@ -1,5 +1,6 @@
 const enUS = {
   common: {
+    blog: "Blog",
     about: "About",
     all_posts: "All Posts",
     author: "Author",
@@ -11,7 +12,7 @@ const enUS = {
     company: "Company",
     directory: "Directory",
     global_nav: "Global Navigation",
-    header_title: "Astro Plain",
+    header_title: "Yonggan's Blog",
     home: "Home",
     last_modified: "Last modified: ",
     latest_posts: "Latest Posts",
@@ -35,7 +36,7 @@ const enUS = {
     scroll_to_top: "Scroll to Top",
     search: "Search",
     site_description: "Site description...",
-    site_title: "Astro Plain",
+    site_title: "Yonggan's Blog",
     table_of_contents: "Table of Contents",
     tag: "Tag",
     tags: "Tags",

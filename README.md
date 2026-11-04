@@ -105,7 +105,7 @@ Modify the following fields in the translation files `i18n/messages/*.ts`:
 Replace the following files:
 
 - `public/favicon.ico`
-- `public/favicon.svg`
+- `public/favicon.png`
 - `public/apple-touch-icon.png`
 - `public/static/images/og.jpg`
 - `src/assets/*`

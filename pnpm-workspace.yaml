@@ -1,0 +1,7 @@
+packageExtensions:
+  ts-intl-astro@*:
+    dependencies:
+      "@aaakul/ts-intl": "*"
+
+overrides:
+  "@aaakul/ts-intl": "*"

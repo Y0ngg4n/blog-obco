@@ -3,8 +3,6 @@ import SiteConfig from "~/site.config";
 import { z } from "astro/zod";
 
 import enUS from "./messages/en-US";
-import jaJP from "./messages/ja-JP";
-import zhHans from "./messages/zh-Hans";
 
 // Validate language settings from site.config.ts
 const langCodeSchema = z.string().regex(/^[a-z]{2,3}(-[A-Za-z]{2,4})?$/);
@@ -58,9 +56,7 @@ export const {
 } = createAstroI18n({
   defaultLanguage: "zh-Hans",
   messages: {
-    "zh-Hans": zhHans,
     "en-US": enUS,
-    "ja-JP": jaJP,
   },
 });
 

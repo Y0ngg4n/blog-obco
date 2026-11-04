@@ -15,16 +15,14 @@ const normalizedBasePath = rawBasePath ? `/${rawBasePath.replace(/^\/+|\/+$/g, "
 
 const SiteConfig = {
   /** 默认语言代码 / Default Language Code / デフォルト言語コード */
-  defaultLanguage: "zh-Hans",
+  defaultLanguage: "en-US",
 
   /** 默认OG图片 / Default OG Image / デフォルトのOGP画像 */
-  ogImage: `${normalizedBasePath}/static/images/og.jpg`,
+  ogImage: `${normalizedBasePath}/static/images/og.png`,
 
   /** 多语言名称映射 / Language Name Mapping / 言語名マッピング */
   languageNameMap: {
     "en-US": "English",
-    "ja-JP": "日本語",
-    "zh-Hans": "简体中文",
   },
 
   /** 网站根地址 / Site URL / サイトの URL */
@@ -40,11 +38,11 @@ const SiteConfig = {
   cookieMaxAgeDays: "session" as "session" | "none" | number,
 
   /** 每页显示的文章数量 / Number of posts displayed per page / 1ページに表示される記事数 */
-  postsPerPage: 5,
+  postsPerPage: 7,
 
   /** 顶部导航栏链接配置 / Header navigation links / ヘッダーナビゲーションリンク */
   navLinks: [
-    { href: "", titleKey: "home" },
+    { href: "", titleKey: "blog" },
     { href: "/projects", titleKey: "projects" },
     { href: "/about", titleKey: "about" },
     { href: "/search", titleKey: "search" },

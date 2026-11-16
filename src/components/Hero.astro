@@ -1,6 +1,6 @@
 ---
-import { useLocale } from "~/i18n";
 import { getCollection, render } from "astro:content";
+import { useLocale } from "~/i18n";
 import CustomLink from "@/components/ui/Link.astro";
 import Steps from "@/components/mdx/Steps.astro";
 import FileTree from "@/components/mdx/FileTree.astro";
@@ -8,29 +8,46 @@ import Tabs from "@/components/mdx/Tabs.astro";
 import TabItem from "@/components/mdx/TabItem.astro";
 import Icon from "@/components/ui/Icon.astro";
 
-const lang = useLocale();
+const lang = useLocale().toLowerCase();
 
-const document = (await getCollection("mdx", (doc) => doc.id === `${lang}/hero`))[0];
+const documents = await getCollection("mdx");
 
-let Content = null;
-if (document) {
-  ({ Content } = await render(document));
+const document = documents.find((doc) => {
+  const id = doc.id.replace(/\.mdx?$/, "");
+  return id === `${lang}/hero` || id === `hero/${lang}`;
+});
+
+if (!document && import.meta.env.DEV) {
+  console.warn(
+    `[Hero] No hero MDX document found for locale "${lang}".`,
+    "Available documents:",
+    documents.map((doc) => doc.id),
+  );
 }
+
+const Content = document ? (await render(document)).Content : null;
 ---
+
+{
+  Content && (
+    <section class="hero-section">
+      <Content
+        id="content"
+        components={{
+          a: CustomLink,
+          Steps,
+          FileTree,
+          Tabs,
+          TabItem,
+          Icon,
+        }}
+      />
+    </section>
+  )
+}
 
 <style>
   .hero-section {
     margin-bottom: var(--space-12);
   }
 </style>
-
-{
-  Content && (
-    <div class="hero-section">
-      <Content
-        id="content"
-        components={{ a: CustomLink, Steps: Steps, FileTree, Tabs, TabItem, Icon }}
-      />
-    </div>
-  )
-}
